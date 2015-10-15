@@ -8,15 +8,15 @@ import com.ldz.code.interceptor.Interceptor;
  * @date 2015年10月15日 上午10:17:12 
  */
 public class LoginInterceptor implements Interceptor {
-
+	
 	@Override
 	public void doInterceptor(ActionInvocation invoke) {
 		Object admin = invoke.getController().getRequest().getSession().getAttribute("admin");
 		if(admin==null) {
-			invoke.getController().render("/login.html");
-			return;
+			invoke.getController().redirect("/main/login.html");
+		}else {
+			invoke.invoke();
 		}
-		invoke.invoke();
 	}
 
 }

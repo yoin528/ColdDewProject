@@ -10,9 +10,8 @@ import com.ldz.project.interceptor.LoginInterceptor;
  * @date 2015年10月14日 上午10:47:35 
  */
 @Controller(path="/main",viewPath="template/back")
-@Before(LoginInterceptor.class)
 public class MainController extends BaseController{
-	@Override
+	@Before(LoginInterceptor.class)
 	public void execute() {
 		render("index.html");
 	}
@@ -26,10 +25,10 @@ public class MainController extends BaseController{
 			admin.setAccount(account);
 			admin.setPassword(password);
 			setSession("admin", admin);
+			putData("curAdmin", admin);
 			render("index.html");
 		}else {
 			render("login.html");
 		}
-		
 	}
 }
