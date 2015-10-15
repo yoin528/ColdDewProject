@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<meta charset="utf-8" />
+<title>管理员登陆</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+<!-- BEGIN CORE CSS FRAMEWORK -->
+<link href="${base}/assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="${base}/assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="${base}/assets/plugins/boostrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+<link href="${base}/assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="${base}/assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
+<!-- END CORE CSS FRAMEWORK -->
+<!-- BEGIN CSS TEMPLATE -->
+<link href="${base}/assets/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="${base}/assets/css/responsive.css" rel="stylesheet" type="text/css"/>
+<link href="${base}/assets/css/custom-icon-set.css" rel="stylesheet" type="text/css"/>
+<!-- END CSS TEMPLATE -->
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="error-body no-top bodybg">
+<div class="container">
+  <div class="row login-container column-seperation">  
+        <div class="col-md-4 " style="margin:0 auto;float: none;  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);background: rgba(255, 255, 255, 0.65);"> <br>
+		 <form id="form1" class="login-form" action="login" method="post">
+		 <div style="margin:0 auto;text-align:center;">
+		 	<label id="promptMsg" style="color:red;font-size: 12px;display:inline-block;font-weight:bold;" >${promptMsg?default('')}</label>
+		 </div>
+		 <div class="row">
+		 <div class="form-group col-md-12">
+            <label class="form-label">用户名</label>
+            <div class="controls">
+				<div class="input-with-icon  right">                                       
+					<i class=""></i>
+					<input type="text" name="username" id="username" class="form-control">                                 
+				</div>
+            </div>
+          </div>
+          </div>
+		  <div class="row">
+          <div class="form-group col-md-12">
+            <label class="form-label">密码</label>
+            <span class="help"></span>
+            <div class="controls">
+				<div class="input-with-icon  right">                                       
+					<i class=""></i>
+					<input type="password" name="password" id="password" class="form-control">                                 
+				</div>
+            </div>
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-primary btn-cons pull-right" id="sub" type="button">登陆</button>
+            </div>
+          </div>
+		  </form>
+        </div>
+     
+    
+  </div>
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN CORE JS FRAMEWORK-->
+<script src="${base}/assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="${base}/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="${base}/assets/plugins/pace/pace.min.js" type="text/javascript"></script>
+<script src="${base}/assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="${base}/assets/js/login.js" type="text/javascript"></script>
+<!-- BEGIN CORE TEMPLATE JS -->
+<!-- END CORE TEMPLATE JS -->
+</body>
+<script type="text/javascript">
+        $(function () {
+        	$("#sub").click(function(){
+        		var username = $("#username").val();
+            	var password = $("#password").val();
+            	if(username == null || "" == username){
+            		$("#promptMsg").text("用户名不能为空!");
+            		$("#username").focus();
+            	}else if(password == null || "" == password){
+            		$("#promptMsg").text("密码不能为空!");
+            		$("#password").focus();
+            	}else if(password.length >16){
+            		$("#promptMsg").text("密码必须小于等于16个字符!");
+            		$("#password").focus();
+            	}else{
+            		$("#form1").submit();
+            	}
+        	});
+        	
+
+        });
+</script>
+</html>
